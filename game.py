@@ -10,8 +10,8 @@ pygame.init()
 red = (255, 0, 0)
 clock = pygame.time.Clock()
 width = 480
-height = 800
-screen = pygame.display.set_mode((width, height))
+height = 700
+screen = pygame.display.set_mode((width, height),HWSURFACE|DOUBLEBUF|RESIZABLE)
 pygame.display.set_caption("Galaga")
 font = pygame.font.SysFont("Comic Sans MS", 40)
 font1 = pygame.font.SysFont("Comic Sans MS", 30)
@@ -30,7 +30,7 @@ you_win = pygame.image.load("you_win.png")
 
 #Object creating
 play = True
-ship = Ship(205, 700)
+ship = Ship(205, 600)
 bullets = []
 next = 0
 aliens = []
@@ -182,15 +182,15 @@ while True:
 
         if ship.exist:
             if life == 3:
-                screen.blit(s_temp, (0, 770))
-                screen.blit(s_temp, (30, 770))
+                screen.blit(s_temp, (0, 670))
+                screen.blit(s_temp, (30, 670))
             if life == 2:
-                screen.blit(s_temp, (0, 770))
+                screen.blit(s_temp, (0, 670))
             screen.blit(s, (ship.xPos, ship.yPos))
         elif not ship.exist and life > 0:
             if life < 3:
                 if life == 2:
-                    screen.blit(s_temp, (0, 770))
+                    screen.blit(s_temp, (0, 670))
                 cnt += 1
                 if cnt == 30:
                     cnt = 0
@@ -220,7 +220,7 @@ while True:
             if event.type == KEYDOWN:
                 if event.key == K_BACKSPACE:
                     play = True
-                    ship = Ship(205, 700)
+                    ship = Ship(205, 600)
                     bullets = []
                     next = 0
                     aliens = []
